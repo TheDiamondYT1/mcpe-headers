@@ -1,4 +1,4 @@
-# mcpeheaders
+# mcpe-headers
 C++ header files for creating native Minecraft: Pocket Edition mods.
 
 ### Tutorial
