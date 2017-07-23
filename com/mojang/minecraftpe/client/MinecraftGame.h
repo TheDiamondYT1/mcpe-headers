@@ -34,6 +34,11 @@ class Dimension;
 class InputMode;
 class GuiData;
 class ScreenChooser;
+class Font;
+namespace mce { 
+	class UUID;
+	class TextureGroup;
+};
 namespace ui {
 	class GameEventNotification;
 };
@@ -289,7 +294,6 @@ public:
 	bool isNotVLRMode() const;
 	bool isInBedScreen() const;
 	bool isShowingMenu() const;
-	void* getLocalPlayer() const;
 	void* getMultiplayer() const;
 	void* getSoundEngine() const;
 	void* getUserManager() const;

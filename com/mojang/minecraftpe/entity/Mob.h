@@ -8,7 +8,6 @@ enum class AttributeBuffType;
 class MobEffect;
 class MobEffectInstance;
 enum class EquipmentSlot;
-namespace mce { class UUID; }
 
 class Mob : public Entity {
 
