@@ -1,8 +1,7 @@
 #pragma once
 
+#include <string>
 #include <memory>
-
-#include "App.h"
 
 class Minecraft;
 class LevelSettings;
@@ -35,45 +34,21 @@ class Dimension;
 class InputMode;
 class GuiData;
 class ScreenChooser;
-class ResourcePackManager;
-class Font;
 namespace ui {
 	class GameEventNotification;
-};
-namespace mce {
-	class TextureGroup;
 };
 class ResourcePacksInfoData;
 class HoloUIInputMode;
 enum class ResourcePackResponse;
 
-class MinecraftGame : public App {
+class MinecraftGame {
 public:
 
-	char filler2[720 - 4];
+	char filler1[720 - 4];
 	/* size = 0x2D0 */
 
 	// virtual
 	virtual ~MinecraftGame();
-	virtual void onLowMemory();
-	virtual void onAppPaused();
-	virtual void onAppSuspended();
-	virtual void onAppResumed();
-	virtual void onAppFocusLost();
-	virtual void onAppFocusGained();
-	virtual void onPushNotificationReceived(PushNotificationMessage const&);
-	virtual void audioEngineOn();
-	virtual void audioEngineOff();
-	virtual void muteAudio();
-	virtual void unMuteAudio();
-	virtual bool useTouchscreen();
-	virtual void setTextboxText(const std::string &);
-	virtual void update();
-	virtual void setUISizeAndScale(int, int, float);
-	virtual void setRenderingSize(int, int);
-	virtual void init();
-	virtual void handleBack(bool);
-
 
 	// non virtual
 	MinecraftGame(int, char**);
@@ -122,6 +97,7 @@ public:
 	void setupRenderer();
 	void* useController();
 	void* checkForPiracy();
+	LocalPlayer* getLocalPlayer() const;
 	void* getScreenNames();
 	void handleTextChar(std::string const&, bool, FocusImpact);
 	void joinRealmsGame(Realms::World const&, Social::GameConnectionInfo const&);

@@ -76,6 +76,7 @@ public:
 		~Option(){}
 	};
 
+	Options(std::string const&, bool, std::unique_ptr<OptionValueInterface, std::default_delete<OptionValueInterface> >, bool);
 	~Options();
 	int getTexelAA();
 	bool getVRTapTurn();

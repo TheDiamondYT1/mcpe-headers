@@ -29,7 +29,7 @@ public:
 	virtual void readAdditionalSaveData(CompoundTag const&);
 	virtual void addAdditionalSaveData(CompoundTag&);
 	virtual void die(EntityDamageSource const&);
-    void setSneaking(bool);
+	virtual void setSneaking(bool);
 	virtual void setSprinting(bool);
 	virtual void actuallyHurt(int, EntityDamageSource const*, bool);
 	virtual void travel(float, float);

@@ -78,7 +78,7 @@ public:
 	void forEachScreen(std::function<bool (std::shared_ptr<AbstractScreen>&)>, bool);
 	void getServerData();
 	void checkForPiracy();
-	LocalPlayer* getLocalPlayer();
+	LocalPlayer* getLocalPlayer() const;
 	void getScreenNames();
 	void getScreenStack();
 	void onPlayerLoaded(Player&);

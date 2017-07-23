@@ -83,7 +83,7 @@ public:
     virtual std::vector<ItemInstance const*> getAllEquipment() const;
     virtual std::vector<ItemInstance*> getAllEquipment();
     virtual void sendInventory() const;
-    void jumpFromGround();
+    virtual void jumpFromGround();
     virtual void updateAi();
     virtual int getExperienceReward() const;
     virtual void dropEquipment(EntityDamageSource const&, int);
@@ -126,10 +126,10 @@ public:
     virtual void openNpcInteractScreen(Entity&);
     virtual void openInventory();
     virtual void openStructureEditor(BlockPos const&);
-    void displayChatMessage(std::string const&, std::string const&);
-    void displayClientMessage(std::string const&);
-    void displayLocalizableMessage(std::string const&, std::vector<std::string, std::allocator<std::string>> const&, bool);
-    void displayWhisperMessage(std::string const&, std::string const&);
+    virtual void displayChatMessage(std::string const&, std::string const&);
+    virtual void displayClientMessage(std::string const&);
+    virtual void displayLocalizableMessage(std::string const&, std::vector<std::string, std::allocator<std::string>> const&, bool);
+    virtual void displayWhisperMessage(std::string const&, std::string const&);
     virtual void startSleepInBed(BlockPos const&);
     virtual void stopSleepInBed(bool, bool);
     virtual bool canStartSleepInBed();
