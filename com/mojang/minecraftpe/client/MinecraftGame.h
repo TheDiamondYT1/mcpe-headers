@@ -58,7 +58,7 @@ public:
 	// non virtual
 	MinecraftGame(int, char**);
 	Options* getOptions();
-	Minecraft* getServer();
+	Minecraft* getMinecraft();
 	void* getHoloInput() const;
 	void* getSkinRepository() const;
 	void* getInput() const;
@@ -66,6 +66,7 @@ public:
 	void setEduMode(bool);
 	void* getLevelLoader();
 	void* getContentManager();
+	void setGenerateDocumentation(bool);
 	void setLaunchedFromOculusApp(bool);
 	void* getDpadScale();
 	void* getScreenWidth() const;
@@ -102,7 +103,6 @@ public:
 	void setupRenderer();
 	void* useController();
 	void* checkForPiracy();
-	LocalPlayer* getLocalPlayer() const;
 	void* getScreenNames();
 	void handleTextChar(std::string const&, bool, FocusImpact);
 	void joinRealmsGame(Realms::World const&, Social::GameConnectionInfo const&);
@@ -158,6 +158,7 @@ public:
 	void handleLicenseChanged();
 	void hasNetworkPrivileges(bool);
 	void initializeTrialWorld(Player*);
+	void setPrimaryLocalPlayer(LocalPlayer*);
 	void onClientCreatedLevel(std::unique_ptr<Level>, std::unique_ptr<LocalPlayer>);
 	void registerUpsellScreen();
 	void waitAsyncSuspendWork();
@@ -278,7 +279,6 @@ public:
 	void returnJoinLobbyResultBasedOnPendingRealmsInvites();
 	void play(std::string const&, Vec3 const&, float, float);
 	void playUI(std::string const&, float, float);
-	void ResetBai(int);
 	void endFrame();
 	bool isInGame();
 	void* getRealms();
@@ -291,7 +291,6 @@ public:
 	void* getUIHeight() const;
 	bool allowPicking() const;
 	void* getUIDefRepo() const;
-	bool isNotVLRMode() const;
 	bool isInBedScreen() const;
 	bool isShowingMenu() const;
 	void* getMultiplayer() const;
@@ -316,6 +315,7 @@ public:
 	void* getForceMonoscopic() const;
 	void* getOfferRepository() const;
 	bool isHoloCursorNeeded() const;
+	bool shouldGenerateDocs() const;
 	void* getCurrentInputMode() const;
 	bool hasPendingScreenPop() const;
 	void* isRealityFullVRMode() const;

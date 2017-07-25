@@ -1,7 +1,6 @@
 #pragma once
 
-struct Random
-{
+struct Random {
 public:
 	Random()=default;
 	Random(long unsigned int);
