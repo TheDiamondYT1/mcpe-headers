@@ -30,7 +30,9 @@ class FoodItemComponent;
 class SeedItemComponent;
 class CameraItemComponent;
 class Random;
-namespace Json { class Value; }
+namespace Json { 
+	class Value; 
+}
 
 class Item {
 public:
@@ -152,7 +154,7 @@ public:
 
 	// non virtual
 	Item(std::string const&, short);
-static Item* lookupByName(std::string const&, bool);
+	static Item* lookupByName(std::string const&, bool);
 	static TextureUVCoordinateSet getTextureUVCoordinateSet(std::string const&, int);
 	static TextureUVCoordinateSet getTextureItem(std::string const&);
 	static void addBlockItems();
@@ -175,7 +177,7 @@ public:
 public:
 	static Item* mItems[4096];
 	static std::vector<ItemInstance> mCreativeList;
-	static std::unordered_map<std::string,std::pair<std::string const,std::unique_ptr<Item>>> mItemLookupMap;
+	static std::unordered_map<std::string,std::unique_ptr<Item>> mItemLookupMap;
 public:
 	static Item* mDye_powder;	//_ZN4Item11mDye_powderE
 	static Item* mBucket;	//_ZN4Item7mBucketE
@@ -365,15 +367,16 @@ public:
 	static Item* mCamera;	//_ZN4Item7mCameraE
 };
 
-template <typename ItemType,typename...Args>
-ItemType& registerItem(std::string const&name,int id,const Args&...rest)
+template <typename ItemType, typename...Args>
+ItemType& registerItem(std::string const& name, int id, const Args&...rest)
 {
 	std::string const item_name = Util::toLower(name);
-	if(Item::mItemLookupMap.count(item_name)!=0)
-		return *(ItemType*)Item::mItems[id + 0x100];
-	
-	ItemType* new_instance = new ItemType(name,id,rest...);
+	if(Item::mItemLookupMap.count(item_name) != 0)
+	{
+		return *(ItemType*) Item::mItems[id + 0x100];
+	}
+	ItemType* new_instance = new ItemType(name, id, rest...);
 	Item::mItems[id + 0x100] = new_instance;
-	Item::mItemLookupMap.emplace(item_name,std::pair<std::string const,std::unique_ptr<Item> >(item_name,std::unique_ptr<Item>((Item*)new_instance)));
+	Item::mItemLookupMap.emplace(item_name, std::unique_ptr<Item>((Item*) new_instance)));
 	return *new_instance;
 }
